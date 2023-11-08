@@ -4,24 +4,28 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 
-document.querySelector('.show-modal').addEventListener('click', function () {
-  modal.style.display = 'block';
-  overlay.style.display = 'block';
-});
+const btnOpenModal = document.querySelectorAll('.show-modal');
+console.log(btnOpenModal);
 
-document.querySelector('.close-modal').addEventListener('click', function () {
-  modal.style.display = 'none';
-  overlay.style.display = 'none';
+for (let i = 0; i < btnOpenModal.length; i++)
+  btnOpenModal[i].addEventListener('click', function () {
+    modal.classList.toggle('hidden');
+    overlay.classList.toggle('hidden');
+  });
+
+btnCloseModal.addEventListener('click', function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 });
 
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
-    document.querySelector('.modal').style.display = 'none';
-    overlay.style.display = 'none';
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
   }
 });
 
 overlay.addEventListener('click', function () {
-  modal.style.display = 'none';
-  overlay.style.display = 'none';
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 });
